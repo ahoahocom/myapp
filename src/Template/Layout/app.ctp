@@ -36,6 +36,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->script('moment.min') ?>
     <?= $this->Html->script('jquery.min') ?>
     <?= $this->Html->script('fullcalendar.min') ?>
+    <?= $this->Html->script('ja') ?>
     <?= $this->Html->script('calendar') ?>
     <?= $this->fetch('script') ?>
 </head>
@@ -54,7 +55,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
       </div>
   </nav>
   <?= $this->Flash->render() ?>
-  <div class="container clearfix">
+  <div class="container clearfix" align="center">
       <?= $this->fetch('content') ?>
   </div>
   <footer>
