@@ -25,8 +25,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('base2.css') ?>
+    <?= $this->Html->css('cake2.css') ?>
     <?= $this->Html->css('fullcalendar') ?>
     <?= $this->Html->css(['fullcalendar.print'],['media' => 'print']) ?>
 
