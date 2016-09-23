@@ -26,6 +26,12 @@ class CalendarController extends AppController
       'end' => '2016-09-16'
     );
 
+    $events[] = array(
+      'title' => 'Meeting',
+      'start' => '2016-09-12T10:30:00',
+      'end' => '2016-09-12T12:30:00'
+    );
+
     echo json_encode($events);
   }
 
