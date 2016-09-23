@@ -10,7 +10,7 @@ $(document).ready(function() {
 			navLinks: true, // can click day/week names to navigate views
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
-			events: 'http://localhost/myapp/calendar/event'/*[
+			events: 'http://localhost/myapp/events/'/*[
 				{
 					title: 'All Day Event',
 					start: '2016-09-01'
