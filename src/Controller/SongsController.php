@@ -24,6 +24,16 @@ class SongsController extends AppController
         $this->set('_serialize', ['songs']);
     }
 
+    public function search(){
+      $songs = [];
+      if($this->request->is('post')){
+        $find = $this->request->data['find'];
+        $songs = $this->Songs->find()
+        ->where(["title like " => '%'.$find.'%']);
+      }
+      $this->set('songs', $songs);
+    }
+
     /**
      * View method
      *
