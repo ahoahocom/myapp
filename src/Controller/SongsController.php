@@ -18,10 +18,12 @@ class SongsController extends AppController
      */
     public function index()
     {
-        $songs = $this->paginate($this->Songs);
+      $songs = $this->Songs->find('all')
+      ->select(['title', 'artist', 'userId'])
+      ->order(['id' => 'DESC'])
+      ->limit(5);
 
-        $this->set(compact('songs'));
-        $this->set('_serialize', ['songs']);
+      $this->set('songs', $songs);
     }
 
     public function search(){
@@ -34,10 +36,17 @@ class SongsController extends AppController
       $this->set('songs', $songs);
     }
 
+    public function all(){
+      $songs = $this->paginate($this->Songs);
+
+      $this->set(compact('songs'));
+      $this->set('_serialize', ['songs']);
+    }
+
     /**
      * View method
      *
-     * @param string|null $id Song id.
+     * @param string|$id Song id.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
