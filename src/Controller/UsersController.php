@@ -108,4 +108,19 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+    *Login method
+    */
+    public function login(){
+      $user = $this->Auth->identify();// Postされたユーザー名とパスワードをもとにデータベースを検索。ユーザー名とパスワードに該当するユーザーがreturnされる
+
+      if($user){
+        $this->Auth->setUser($user);
+        return $this->Auth->redirectUrl();
+      }else{
+        throw new UnauthorizedException('メールアドレスかパスワードが間違っています');
+      }
+
+    }
 }

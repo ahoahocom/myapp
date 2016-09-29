@@ -43,6 +43,26 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [  //AuthComponent読み込み
+          'authenticate' => [
+            'Form' => [ // 認証の種類を指定。Form,Basic,Digestが使える。デフォルトはForm
+              'fields' => [
+                'username' => 'email',
+                'password' => 'password'
+              ]
+            ]
+          ],
+          'loginreRedirect' => [
+            'controller' => 'Songs',
+            'action' => 'index'
+          ],
+          'logoutRedirect' => [
+            'controller' => 'Songs',
+            'action' => 'index'
+          ],
+          'authError' => 'ログインできませんでした。'
+
+        ])
     }
 
     /**
