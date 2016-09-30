@@ -42,13 +42,8 @@ class User extends Entity
         'password'
     ];
 
-    /**
- * パスワード保存時のハッシュ化
- * @param  string $password パスワード文字列
- * @return string           ハッシュ化されたパスワード
- */
-protected function _setPassword($password)
-{
-  return (new DefaultPasswordHasher)-&gt;hash($password);
-}
+    protected function _setPassword($password)
+    {
+        return (new DefaultPasswordHasher)->hash($password);
+    }
 }

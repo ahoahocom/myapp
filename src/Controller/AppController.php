@@ -44,6 +44,10 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [  //AuthComponent読み込み
+          'loginAction' => [
+            'controller' => 'Users',
+            'action' => 'login',
+          ],
           'authenticate' => [
             'Form' => [ // 認証の種類を指定。Form,Basic,Digestが使える。デフォルトはForm
               'fields' => [
@@ -62,7 +66,7 @@ class AppController extends Controller
           ],
           'authError' => 'ログインできませんでした。'
 
-        ])
+        ]);
     }
 
     /**

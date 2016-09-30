@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Users Controller
@@ -113,14 +114,28 @@ class UsersController extends AppController
     *Login method
     */
     public function login(){
-      $user = $this->Auth->identify();// Postされたユーザー名とパスワードをもとにデータベースを検索。ユーザー名とパスワードに該当するユーザーがreturnされる
+      if($this->request->is('post')){
+        $user = $this->Auth->identify();// Postされたユーザー名とパスワードをもとにデータベースを検索。ユーザー名とパスワードに該当するユーザーがreturnされる
 
-      if($user){
-        $this->Auth->setUser($user);
-        return $this->Auth->redirectUrl();
-      }else{
-        throw new UnauthorizedException('メールアドレスかパスワードが間違っています');
+        if($user){
+          $this->Auth->setUser($user);
+          return $this->Auth->redirectUrl();
+        }else{
+          $this->Flash->error('ユーザー名かパスワードが間違っています');
+        }
       }
+
+    }
+
+    /**
+    *beforeFilter
+    *@param Event $event イベントオブジェクト
+    *@return void
+    */
+    public function beforeFilter(Event $event)
+    {
+      parent::beforeFilter($event);
+      $this->Auth->allow();
 
     }
 }
