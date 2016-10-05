@@ -119,7 +119,7 @@ class UsersController extends AppController
 
         if($user){
           $this->Auth->setUser($user);
-          return $this->Auth->redirectUrl();
+          return $this->redirect($this->Auth->redirectUrl());
         }else{
           $this->Flash->error('ユーザー名かパスワードが間違っています');
         }

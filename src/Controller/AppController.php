@@ -55,17 +55,7 @@ class AppController extends Controller
                 'password' => 'password'
               ]
             ]
-          ],
-          'loginreRedirect' => [
-            'controller' => 'Songs',
-            'action' => 'index'
-          ],
-          'logoutRedirect' => [
-            'controller' => 'Songs',
-            'action' => 'index'
-          ],
-          'authError' => 'ログインできませんでした。'
-
+          ]
         ]);
     }
 
