@@ -44,6 +44,7 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [  //AuthComponent読み込み
+        'authorize' => 'Controller',
           'loginAction' => [
             'controller' => 'Users',
             'action' => 'login',
@@ -57,6 +58,12 @@ class AppController extends Controller
             ]
           ]
         ]);
+         $this->Auth->allow(['display']);
+    }
+
+    public function isAuthorized($user)
+    {
+      return false;
     }
 
     /**

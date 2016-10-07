@@ -1,4 +1,18 @@
+
+
 $(document).ready(function() {
+
+		var today = new Date();
+		var m = today.getMonth() + 1;
+		var d = today.getMonth() + 1;
+
+		if(m<10){
+			m = '0' + m;
+		}
+
+		if(d<10){
+			d = '0' + d;
+		}
 
 		$('#calendar').fullCalendar({
 			header: {
@@ -6,7 +20,10 @@ $(document).ready(function() {
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay,listWeek'
 			},
-			defaultDate: '2016-09-12',
+			eventClick: function(event) {
+				window.location.href = 'http://localhost/myapp/events/view/'+event.id;
+			},
+			defaultDate: today.getFullYear()+'-' + m + '-' + d,
 			navLinks: true, // can click day/week names to navigate views
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events

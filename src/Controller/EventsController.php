@@ -19,7 +19,7 @@ class EventsController extends AppController
     public function index()
     {
         $this->autoRender = false;
-        $events = $this->Events->find('all');
+        $events = $this->Events->find()->where('user_id = '.$this->Auth->user('id'));
 
         echo json_encode($events);
     }
@@ -51,6 +51,7 @@ class EventsController extends AppController
         $event = $this->Events->newEntity();
         if ($this->request->is('post')) {
             $event = $this->Events->patchEntity($event, $this->request->data);
+            $event->user_id = $this->Auth->user('id');
             if ($this->Events->save($event)) {
                 $this->Flash->success(__('The event has been saved.'));
 
@@ -108,4 +109,27 @@ class EventsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user)
+{
+    $action = $this->request->params['action'];
+
+    // addアクションは常に許可します。
+    /*if (in_array($action, ['add', 'index', 'view'])) {
+        return true;
+    }
+    // その他のすべてのアクションは、id を必要とします。
+    if (empty($this->request->params['pass'][0])) {
+        return false;
+    }
+
+    // ブックマークが現在のユーザに属するかどうかをチェック
+    $id = $this->request->params['pass'][0];
+    $event = $this->Events->get($id);
+    if ($event->user_id == $user['id']) {
+        return true;
+    }
+    return parent::isAuthorized($user);*/
+    return true;
+}
 }

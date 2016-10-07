@@ -35,6 +35,11 @@ class CalendarController extends AppController
     echo json_encode($events);
   }
 
+  public function isAuthorized($user)
+{
+    return true;
+}
+
 }
 
 
