@@ -18,7 +18,6 @@ $(document).ready(function() {
 			header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay,listWeek'
 			},
 			eventClick: function(event) {
 				window.location.href = 'http://localhost/myapp/events/view/'+event.id;

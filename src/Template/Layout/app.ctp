@@ -29,7 +29,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('cake2.css') ?>
     <?= $this->Html->css('fullcalendar') ?>
     <?= $this->Html->css(['fullcalendar.print'],['media' => 'print']) ?>
-
+    <?= $this->Html->css('jquery.timepicker') ?>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -38,6 +39,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->script('fullcalendar.min') ?>
     <?= $this->Html->script('ja') ?>
     <?= $this->Html->script('calendar') ?>
+    <?= $this->Html->script('jquery.timepicker.min') ?>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
     <?= $this->fetch('script') ?>
 </head>
 <body>

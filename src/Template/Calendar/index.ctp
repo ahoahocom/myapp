@@ -1,13 +1,21 @@
-<a id="modal-open" class="button-link">クリックするとモーダルウィンドウを開きます。</a>
 <div id="calendar"></div>
 <div id="modal-content">
-	<?=$this->Form->create(null, [
-    'type' => 'post',
-    'url' => ['controller' => 'Events', 'action' => 'add']
-    ])?>
-    <?=$this->Form->text('title')?>
-    <?=$this->Form->submit('送信')?>
-    <?=$this->Form->end()?>
+		<?= $this->Form->create(null, [
+	    'type' => 'post',
+	    'url' => ['controller' => 'Events', 'action' => 'add']
+	    ]) ?>
+    <fieldset>
+        <legend><?= __('Add Event') ?></legend>
+        <?php
+            echo $this->Form->input('title');
+            echo $this->Form->input('start', array('id' => 'datepicker'));
+						echo $this->Form->input('startTime');
+            echo $this->Form->input('end' ,array('id' => 'datepicker2'));
+						echo $this->Form->input('endTime');
+        ?>
+    </fieldset>
+    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->end() ?>
 	<p><a id="modal-close" class="button-link">閉じる</a></p>
 </div>
 <script type="text/javascript">
@@ -69,5 +77,21 @@ function centeringModalSyncer() {
 }
 
 } ) ;
+
+//日付入力用カレンダー
+$(function() {
+    $("#datepicker").datepicker();
+		$("#datepicker").datepicker("option", "dateFormat", 'yy-mm-dd');
+		$("#datepicker2").datepicker();
+		$("#datepicker2").datepicker("option", "dateFormat", 'yy-mm-dd');
+  });
+
+	//時間入力
+	setTimepicker();
+  function setTimepicker() {
+  	var options = {timeFormat:'H:i'};
+    $('#starttime').timepicker(options);
+    $('#endtime').timepicker(options);
+  }
 
 </script>
