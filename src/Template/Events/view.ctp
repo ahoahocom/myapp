@@ -16,15 +16,11 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Start') ?></th>
-            <td><?= h($event->start) ?></td>
+            <td><?= date("Y年m月d日 H:i:s", strtotime(h($event->start))) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('End') ?></th>
-            <td><?= h($event->end) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($event->id) ?></td>
+            <td><?= date("Y年m月d日 H:i:s", strtotime(h($event->end))) ?></td>
         </tr>
     </table>
 </div>

@@ -80,6 +80,9 @@ class EventsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $event = $this->Events->patchEntity($event, $this->request->data);
+            $event->title = $this->request->data('title');
+            $event->start = $this->request->data('start')."T".$this->request->data('startTime').":00";
+            $event->end = $this->request->data('end')."T".$this->request->data('endTime').":00";
             if ($this->Events->save($event)) {
                 $this->Flash->success(__('The event has been saved.'));
 
